@@ -32,6 +32,30 @@ import kotlin.math.ceil
 // ToDo 7: Using the ViewModel class, create a new ViewModel class called PizzaPartyViewModel as
 // a subclass of ViewModel. Add the following properties to the PizzaPartyViewModel - see Brightspace
 
+class PizzaPartyViewModel : ViewModel() {
+    var totalPizzas by mutableStateOf(0)
+        private set
+
+    var numPeopleInput by mutableStateOf("")
+        private set
+
+    var hungerLevel by mutableStateOf("Medium")
+        private set
+
+    fun onNumPeopleInputChange(newValue: String) {
+        numPeopleInput = newValue
+    }
+
+    fun onHungerLevelChange(newValue: String) {
+        hungerLevel = newValue
+    }
+
+    fun calculatePizzas() {
+        totalPizzas = calculateNumPizzas(numPeopleInput.toIntOrNull() ?: 0, hungerLevel)
+    }
+}
+
+
 @Composable
 fun PizzaPartyScreen( modifier: Modifier = Modifier) {
     var totalPizzas by remember { mutableIntStateOf(0) }
