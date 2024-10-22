@@ -28,7 +28,18 @@ import androidx.compose.ui.unit.sp
 
 // ToDo 2: the slider should be able to change the text value of the screen
 
+
+
 // ToDo 3: Make the UI look better by adding a gradient background (vertical) and padding
+
+fun Screen3() {
+    val clrStops = arry0f(
+    0.0f to Color.Green,
+    0.5f to Color.White,
+    1.0f to Color.Black
+    )
+}
+
 
 @Composable
 fun Screen3() {

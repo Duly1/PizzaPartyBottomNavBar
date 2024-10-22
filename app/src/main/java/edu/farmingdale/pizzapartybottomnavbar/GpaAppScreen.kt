@@ -19,6 +19,26 @@ import androidx.compose.ui.unit.dp
 
 // ToDo 5:  Add the GpaAppScreen composable button that clears the input fields when clicked
 
+@Composable
+fun GpaAppScreen() {
+
+    var grade1 by remember { mutableStateOf("") }
+    var grade2 by remember { mutableStateOf("") }
+    var grade3 by remember { mutableStateOf("") }
+
+    // Declare variables for GPA result and background color
+    var gpa by remember { mutableStateOf("") }
+    var backColor by remember { mutableStateOf(Color.White) }
+    var btnLabel by remember { mutableStateOf("Compute GPA") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Cyan) // Set the background to cyan
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
 
 @Composable
 fun GpaAppScreen() {
@@ -32,6 +52,16 @@ fun GpaAppScreen() {
     var gpa by remember { mutableStateOf("") }
     var backColor by remember { mutableStateOf(Color.White) }
     var btnLabel by remember { mutableStateOf("Calulate GPA") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Cyan) // Set the background to cyan
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
+
 
     Column(
         modifier = Modifier
