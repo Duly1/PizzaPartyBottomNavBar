@@ -28,6 +28,19 @@ import androidx.compose.ui.unit.sp
 
 // ToDo 2: the slider should be able to change the text value of the screen
 
+fun Screen3() {
+    var sliderValue by remember { mutableStateOf(0.5f) }
+    var chkd by remember { mutableStateOf(true) }
+
+    // Create a gradient background (vertical)
+    val gradientBackground = Brush.verticalGradient(
+        colors = listOf(
+            Color.Green, // Start color
+            Color.White, // Mid color
+            Color.Black  // End color
+        )
+    )
+
 
 
 // ToDo 3: Make the UI look better by adding a gradient background (vertical) and padding
