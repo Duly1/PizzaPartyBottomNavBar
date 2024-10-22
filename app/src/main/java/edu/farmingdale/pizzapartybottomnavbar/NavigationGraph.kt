@@ -30,3 +30,49 @@ fun NavigationGraph(navController: NavHostController, onBottomBarVisibilityChang
 // ToDo 8: This is the homework:
 // add a drawer navigation as described in drawable drawermenu.png
 // Improve the design and integration of the app for 5 extra credit points.
+
+@Composable
+fun DrawerContent(navController: NavHostController, closeDrawer: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Text("Menu", style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.height(24.dp))
+
+        DrawerItem("Pizza Party", BottomNavigationItems.PizzaScreen.route, navController, closeDrawer)
+        DrawerItem("GPA App", BottomNavigationItems.GpaAppScreen.route, navController, closeDrawer)
+        DrawerItem("Slider App", BottomNavigationItems.Screen3.route, navController, closeDrawer)
+    }
+}
+
+@Composable
+fun DrawerItem(label: String, route: String, navController: NavHostController, closeDrawer: () -> Unit) {
+    TextButton(onClick = {
+        navController.navigate(route) {
+            popUpTo(navController.graph.startDestinationId) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+        closeDrawer()
+    }) {
+        Text(label, style = MaterialTheme.typography.bodyLarge)
+    }
+}
+
+@Composable
+fun TopAppBarWithDrawer(drawerState: DrawerState, scope: CoroutineScope) {
+    TopAppBar(
+        title = { Text("Pizza Party App") },
+        navigationIcon = {
+            IconButton(onClick = {
+                scope.launch { drawerState.open() }
+            }) {
+                Icon(Icons.Default.Menu, contentDescription = "Menu")
+            }
+        }
+    )
+}
